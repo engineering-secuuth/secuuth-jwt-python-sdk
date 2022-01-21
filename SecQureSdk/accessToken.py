@@ -1,11 +1,7 @@
 import json
 from jose import jwt
-
 import requests
-
-
-
-
+JWKURL="https://api.secuuth.io/tokens/jwks"
 class accessToken:
     def __init__(self,token):
         self.token=token;
@@ -13,7 +9,7 @@ class accessToken:
        
     def decodePayload(self):
         
-        res=requests.get("https://api.secuuth.io/tokens/jwks")
+        res=requests.get(JWKURL)
 
         data=res.json()
         
@@ -24,7 +20,6 @@ class accessToken:
             #payload = jwt.decode(self.token,data,algorithms='RS256')
             return payload
         except:
-            print("not verified")
             return {}
 
     def getSub(self):

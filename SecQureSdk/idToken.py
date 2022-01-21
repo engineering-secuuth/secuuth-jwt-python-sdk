@@ -3,7 +3,7 @@ from jose import jwt
 
 import requests
 
-
+JWKURL="https://api.secuuth.io/tokens/jwks"
 class idToken:
     def __init__(self,token):
         self.token=token;
@@ -11,16 +11,13 @@ class idToken:
        
     def decodePayload(self):
         
-        res=requests.get("https://api.secuuth.io/tokens/jwks")
-
+        res=requests.get(JWKURL)
         data=res.json()
 
         try:
             payload = jwt.decode(self.token,data, algorithms='RS256', options= {'verify_exp':True,'verify_aud': False,})
-            
             return payload
         except:
-            print("not verified")
             return {}
 
     def getSub(self):

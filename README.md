@@ -1,10 +1,11 @@
 
 #secuuth-python-sdk
-IT Takes token as input and it verify and decode the token
+IT Takes token as input and it verify ,decode and renew the token
+
 
 ##Installation
 
-```pip install pySdk```
+```pip install secuuthTokenPythonSdk```
 
 ##Methods
 decodedAndVerifiedAccessToken=accessToken(token).decode()
